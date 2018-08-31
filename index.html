@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>EXP2018</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link href='base.css' rel='stylesheet' type='text/css'>
+    <link href='fonts/typefaces.css' rel='stylesheet' type='text/css'>
+
+    <script language="javascript" type="text/javascript" src="libraries/jquery-3.2.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+
+</head>
+
+<body>
+
+    <script language="javascript" type="text/javascript" src="interacao-final.js" id="canvas"></script>
+
+<!-- INPUT onde o utilizador coloca uma resposta e ao fazer submit a mesma é enviada para o array em php que atualiza o ficheiro de javascript -->
+    <form id="form">
+    <h2 style="border: 1px solid black;margin:0px;"><b>PERGUNTA</b></h2>
+        <p>RESPOSTA</p>
+        <input type="text" name="firstname">
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <!--
+    <div id="main">
+        <div id="sobre" onclick="sobre()">
+            <div id="logo">CRISE DE IDENTIDADE</div>
+        </div>
+        <div id="socialtudo">
+            <div id="redessociais">
+                <div id="facebook"></div>
+                <div id="instagram"></div>
+            </div>
+            <div id="bilingue">EN</div>
+        </div>
+        <div id="menu" onclick="menu();">
+            <div id="actividade">EXPOSIÇÃO</div>
+            <div id="actividade">CONVERSAS</div>
+            <div id="actividade">DOCUMENTÁRIOS</div>
+        </div>
+        <div id="calendario" onclick="menu();">
+            <div id="fixo">
+                <div id="data">
+                    <div id="d"> 
+                        <div id="dias">03-16</div>
+                        </div>
+                    <div id="mes">OUTUBRO 2018</div>
+                </div>
+                <div id="local">GALERIA BELAS-ARTES LISBOA</div>
+            </div>
+        </div>
+    </div>
+-->
+
+</body>
+
+
+
+<script>
+    window.onresize = function() {
+        location.reload();
+    }
+
+
+    var main = document.getElementById("main").offsetWidth;
+
+    function sobre() {
+        openSobre();
+        closeMenuCalendario();
+    }
+
+    function menu() {
+        closeSobre();
+        openMenu();
+        openCalendario();
+    }
+
+
+    $("sobre").hover(function() {
+        $(this).css("border-color", "#ffffff")
+    });
+
+
+    function openSobre() {
+        document.getElementById("sobre").style.height = "calc(100vh - (var(--calendariobott)) - (var(--sobretop)) - (var(--calendarioh)))";
+        document.getElementById("sobre").style.width = "calc(100vw - (var(--sobreleft)) - (var(--menuw)) - (var(--menuright)) + 1px )";
+        document.getElementById("sobre").style.border = "1px solid white";
+    };
+
+    function closeSobre() {
+        document.getElementById("sobre").style.height = "var(--sobreh)";
+        document.getElementById("sobre").style.width = "var(--sobrew)";
+        document.getElementById("sobre").style.border = "1px solid black";
+    };
+
+
+    function openMenu() {
+        document.getElementById("menu").style.height = "calc(100vh - (var(--menubott)) - (var(--sobretop)) - (var(--sobreh)))";
+        document.getElementById("menu").style.width = "calc(100vw - (var(--calendarioleft)) - (var(--calendariow)) - (var(--menuright)))";
+
+        document.getElementById("calendario").style.height = "calc(var(--sobreh) + 100px)";
+    };
+
+    function openCalendario() {
+        document.getElementById("menu").style.height = "calc(100vh - (var(--menubott)) - (var(--sobretop)) - (var(--sobreh)))";
+        document.getElementById("menu").style.width = "calc(100vw - (var(--calendarioleft)) - (var(--calendariow)) - (var(--menuright)))";
+
+        document.getElementById("calendario").style.height = "calc(var(--sobreh) + 100px)";
+    };
+
+    function closeMenuCalendario() {
+        document.getElementById("menu").style.height = "var(--menuh)";
+        document.getElementById("menu").style.width = "var(--menuw)";
+
+        document.getElementById("calendario").style.height = "var(--calendarioh)";
+    };
+
+</script>
