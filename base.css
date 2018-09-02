@@ -68,7 +68,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    /*font-family: 'lunchtype24expanded_regular';*/
+    position: absolute;
 }
 
 
@@ -315,3 +315,31 @@ body {
 #sobre:hover, #menu:hover, #calendario:hover {
     border: 1px solid white;
 }
+
+
+/*TESTES*/
+
+#var-test {
+    width: 100px;
+    height: 100px;
+/*    position: absolute;*/
+    top: 100px;
+    left: 100px;
+    color: #000000;
+    font-size: 60px;
+    background-color: white;
+}
+
+
+
+#iframe {
+    width: 300px;
+    height: 300px;
+    position: static;
+    border: none;
+}
+
+
+
+
+
