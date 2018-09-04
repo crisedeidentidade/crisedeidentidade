@@ -21,10 +21,11 @@
     <script language="javascript" type="text/javascript" src="interacao-final.js" id="canvas"></script>
 
 <!-- INPUT onde o utilizador coloca uma resposta e ao fazer submit a mesma é enviada para o array em php que atualiza o ficheiro de javascript -->
-    <form id="form">
+    <form id="form" action="action.php" method="post">
     <h2 style="border: 1px solid black;margin:0px;"><b>PERGUNTA</b></h2>
         <p>RESPOSTA</p>
-        <input type="text" name="firstname">
+        <input type="text" name="field1"><br>
+        <input type="text" name="field2"><br>
         <input type="submit" value="Submit">
     </form>
 
