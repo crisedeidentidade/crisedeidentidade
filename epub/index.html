@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>epub-expo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Expires" CONTENT="-1">
+
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <link href='fonts/typefaces.css' rel='stylesheet' type='text/css'>
+
+    <script language="javascript" type="text/javascript" src="files/jquery-3.3.1.min.js"></script>
+
+</head>
+
+
+<body>
+
+    <div id="header">
+        <img id="logo" src="crisedeidentidade.svg">
+    </div>
+    <div id="selector">
+        <div class="name" id="cat" onclick="cat()">
+            <p class="title">NOT FOR OLD FOGIES</p>
+            <p class="subtitle">CATARINA FAZENDA</p>
+        </div>
+        <div class="name" onclick="meg()" id="meg">
+            <p class="title">ZEITGEIST</p>
+            <p class="subtitle">MARGARIDA SOUSA</p>
+        </div>
+        <div class="name" onclick="nicole()" id="nicole">
+            <p class="title">THE JOURNEY</p>
+            <p class="subtitle">NICOLE HENRIQUES</p>
+        </div>
+        <img id="icon" src="open-icon.svg">
+    </div>
+
+    <iframe src="NotForOldFogies/OEBPS/e-pubTudo-1.xhtml" id="iframe" class="iframe"></iframe>
+</body>
+
+<script>
+    function open() {
+        $('#iframe').animate({
+            top: '35vh'
+        }, "fast");
+        
+        $('.subtitle').animate({
+            marginTop: '1%'
+        }, "fast");
+
+        $('#icon').animate({
+            borderSpacing: 180
+        }, {
+            step: function(now, fx) {
+                $(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+                $(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+                $(this).css('transform', 'rotate(' + now + 'deg)');
+            },
+            duration: 'fast'
+        }, 'linear');
+    };
+
+    function close() {
+        $('#iframe').animate({
+            top: '5vh'
+        }, "fast");
+        
+        $('.subtitle').animate({
+            marginTop: '2%'
+        }, "fast");
+
+        $('#icon').animate({
+            borderSpacing: 0
+        }, {
+            step: function(now, fx) {
+                $(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+                $(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+                $(this).css('transform', 'rotate(' + now + 'deg)');
+            },
+            duration: 'fast'
+        }, 'linear');
+    }
+
+    function fn3() {
+        var first = true;
+        return function() {
+            first ? fn1() : fn2();
+            first = !first;
+        }
+    };
+
+    function fn1() {
+        console.log(1);
+        open();
+    };
+
+    function fn2() {
+        console.log(2);
+        close();
+    };
+
+    document.getElementById("selector").onclick = fn3();
+    document.getElementById("header").onclick = fn3();
+        document.getElementById("cat").style.textDecoration = "underline";
+    
+    function cat() {
+        document.getElementById("iframe").src = "NotForOldFogies/OEBPS/e-pubTudo-1.xhtml";
+        document.getElementById("cat").style.textDecoration = "underline";
+        document.getElementById("meg").style.textDecoration = "none";
+        document.getElementById("iframe").style.backgroundColor = "white";
+        document.getElementById("nicole").style.textDecoration = "none";
+        
+      $("#cat").prependTo("#selector");
+        fn2();
+    }
+    
+    function meg() {
+        document.getElementById("iframe").src = "Zeigeist/OEBPS/Publicacao_2-1.xhtml";
+        document.getElementById("cat").style.textDecoration = "none";
+        document.getElementById("meg").style.textDecoration = "underline";
+        document.getElementById("nicole").style.textDecoration = "none";
+        document.getElementById("iframe").style.backgroundColor = "white";
+
+        $("#meg").prependTo("#selector");
+        fn2();
+    }
+    
+    function nicole() {
+        document.getElementById("iframe").src = "thejourney/OEBPS/thejourney-1.xhtml";
+        document.getElementById("cat").style.textDecoration = "none";
+        document.getElementById("meg").style.textDecoration = "none";
+        document.getElementById("nicole").style.textDecoration = "underline";
+        
+        document.getElementById("iframe").style.backgroundColor = "white";
+$("#nicole").prependTo("#selector");
+        fn2();
+    }
+
+</script>
+
+
+</html>
